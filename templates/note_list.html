@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<style>
+    h4{
+        position: relative;
+    }
+    .icon{
+        position: absolute;
+        right: 5px;
+    }
+</style> 
+<div class="text-center">
+    <h2>Todo List</h2>
+</div>
+<hr>
+    {% for note in todo_list %}
+    <div class="row">
+        <div class="card">
+            <div class="card-body">
+                <h4> {{ note.title }}
+                    <span class="badge badge-{{ note.labels }}">{{ note.labels }}</span>
+                    {{ note.due_date }}            
+                </h4>
+                <span class="icon">
+                    <a href="{% url 'Notes:finished_item' note.id %}"><i class="fa fa-check"></i> </a>
+                    <a href="{% url 'Notes:delete_item' note.id %}"> <i class="fa fa-trash-o"></i></a>
+                </span>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+
+    <div class="text-center">
+        <h2>Finished List</h2>
+    </div>
+    <hr>
+    {% for note in finished_list %}
+    <div class="row">
+        <div class="card">
+            <div class="card-body">
+                <h4> {{ note.title }}
+                    <span class="badge badge-{{ note.labels }}">{{ note.labels }}</span>
+                    {{ note.due_date }}  
+                </h4>                        
+                <span class="icon">
+                    <a href="{% url 'Notes:Recover_item' note.id %}""><i class="fa fa-check"></i> </a>
+                    <a href="{% url 'Notes:delete_item' note.id %}"> <i class="fa fa-trash-o"></i></a>
+                </span>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+{% endblock body %}
