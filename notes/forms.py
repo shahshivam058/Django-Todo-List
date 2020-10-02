@@ -5,4 +5,5 @@ class NoteForm(forms.ModelForm):
     
     class Meta:
         model = Note
-        fields = ("title","due_date","labels","finished","active")
+        #no need of active field
+        fields = ("title","due_date","labels","finished")
