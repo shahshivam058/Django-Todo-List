@@ -14,17 +14,17 @@
     <h2>Todo List</h2>
 </div>
 <hr>
-    {% for note in todo_list %}
+    {% for todo in todo_list %}
     <div class="row">
         <div class="card">
             <div class="card-body">
-                <h4> {{ note.title }}
-                    <span class="badge badge-{{ note.labels }}">{{ note.labels }}</span>
-                    {{ note.due_date }}            
+                <h4> {{ todo.title }}
+                    <span class="badge badge-{{ todo.labels }}">{{ todo.labels }}</span>
+                    {{ todo.due_date }}            
                 </h4>
                 <span class="icon">
-                    <a href="{% url 'Notes:finished_item' note.id %}"><i class="fa fa-check"></i> </a>
-                    <a href="{% url 'Notes:delete_item' note.id %}"> <i class="fa fa-trash-o"></i></a>
+                    <a href="{% url 'Notes:finished_item' todo.id %}"><i class="fa fa-check"></i> </a>
+                    <a href="{% url 'Notes:delete_item' todo.id %}"> <i class="fa fa-trash-o"></i></a>
                 </span>
             </div>
         </div>
@@ -36,17 +36,17 @@
         <h2>Finished List</h2>
     </div>
     <hr>
-    {% for note in finished_list %}
+    {% for finished in finished_list %}
     <div class="row">
         <div class="card">
             <div class="card-body">
-                <h4> {{ note.title }}
-                    <span class="badge badge-{{ note.labels }}">{{ note.labels }}</span>
-                    {{ note.due_date }}  
+                <h4> {{ finished.title }}
+                    <span class="badge badge-{{ finished.labels }}">{{ finished.labels }}</span>
+                    {{ finished.due_date }}  
                 </h4>                        
                 <span class="icon">
-                    <a href="{% url 'Notes:Recover_item' note.id %}"><i class="fa fa-check"></i> </a>
-                    <a href="{% url 'Notes:delete_item' note.id %}"> <i class="fa fa-trash-o"></i></a>
+                    <a href="{% url 'Notes:Recover_item' finished.id %}"><i class="fa fa-check"></i> </a>
+                    <a href="{% url 'Notes:delete_item' finished.id %}"> <i class="fa fa-trash-o"></i></a>
                 </span>
             </div>
         </div>
