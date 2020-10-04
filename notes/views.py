@@ -32,7 +32,7 @@ def delete_item(request,id):
 
 def noteform(request):
     note_form = NoteForm(request.POST or None)
-    if note_form.is_valid():
+    if note_form and note_form.is_valid():
         note_form.save()
         return redirect("Notes:notelist")
     context = {
